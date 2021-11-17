@@ -11,10 +11,10 @@ def temp_logger(temperature_package_id, temperature_core_0, temperature_core_1):
 	temperature_core_0.append(t2)
 	temperature_core_1.append(t3)
 	print("Logged")
-	time.sleep(5)
+	time.sleep(2)
 
 print(f"[INFO] Start {time.ctime()}")
-run_time = []
+run_time=[]
 run_time.append(time.ctime())
 global temperature_package_id
 global temperature_core_0
@@ -27,7 +27,7 @@ while True:
 	try:
 		temp_logger(temperature_package_id, temperature_core_0, temperature_core_1)
 	except KeyboardInterrupt:
-		print(f"[INFO] Stop {time.ctime()}")
+		print(f"\n[INFO] Stop {time.ctime()}")
 		break
 run_time.append(time.ctime()) 
 
@@ -40,6 +40,3 @@ df = pd.DataFrame(
 )
 df.to_csv("temp_log.csv")
 print("[INFO] Data saved as temp_log.csv")
-
-df = pd.read_csv("temp_log.csv")
-df.drop()
