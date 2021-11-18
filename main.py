@@ -26,7 +26,7 @@ temperature_core_1 = []
 print("[INFO] Press Ctrl+c to stop")
 while True:
 	try:
-		temp_logger(temperature_package_id, temperature_core_0, temperature_core_1)
+		temp_logger()
 	except KeyboardInterrupt:
 		print(f"\n[INFO] Stop {time.ctime()}")
 		break
