@@ -51,3 +51,16 @@ df = pd.DataFrame(
 print(f"Start: {time_lst[0]}	Stop: {time_lst[-1]}")
 df.to_csv("temp_log.csv")
 print("[INFO] Data saved as temp_log.csv")
+
+# Sperate graph for rpm and ram
+# Fix csv unnamed col
+# gitignore templog
+# Better functions
+# Live graphing?
+# Full scale gui version?
+# Full scale cli version?
+# Name?
+# Avoid ipynb?
+# Full time logger from boot to shutdown
+# Save in html
+# Graph using js
