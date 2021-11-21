@@ -8,11 +8,13 @@ def temp_logger():
 	temperature_core_0 = d["coretemp"][1][1]
 	temperature_core_1 = d["coretemp"][2][1]
 	ram = (psutil.virtual_memory().available * 100 / psutil.virtual_memory().total) - 100
+	fan = list(psutil.sensors_fans().values())[0][0][1]
 	time_lst.append(time.ctime())
 	temperature_package_id_lst.append(temperature_package_id)
 	temperature_core_0_lst.append(temperature_core_0)
 	temperature_core_1_lst.append(temperature_core_1)
 	ram_lst.append(ram)
+	fan_lst.append(fan)
 	print("Logged")
 	time.sleep(5)
 
@@ -22,11 +24,13 @@ global temperature_package_id_lst
 global temperature_core_0_lst
 global temperature_core_1_lst
 global ram_lst
+global fan_lst
 time_lst = []
 temperature_package_id_lst = []
 temperature_core_0_lst = []
 temperature_core_1_lst = []
 ram_lst = []
+fan_lst = []
 print("[INFO] Press Ctrl+c to stop")
 while True:
 	try:
@@ -40,7 +44,8 @@ df = pd.DataFrame(
 		"package_id": temperature_package_id_lst,
 		"core_0": temperature_core_0_lst,
 		"core_1": temperature_core_1_lst,
-		"ram": ram_lst
+		"ram": ram_lst,
+		"fan": fan_lst
 	}
 )
 print(f"Start: {time_lst[0]}	Stop: {time_lst[-1]}")
