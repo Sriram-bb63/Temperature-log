@@ -4,29 +4,29 @@ import time
 
 def temp_logger():
 	d = psutil.sensors_temperatures()
-	t1 = d["coretemp"][0][1]
-	t2 = d["coretemp"][1][1]
-	t3 = d["coretemp"][2][1]
+	temperature_package_id = d["coretemp"][0][1]
+	temperature_core_0 = d["coretemp"][1][1]
+	temperature_core_1 = d["coretemp"][2][1]
 	ram = (psutil.virtual_memory().available * 100 / psutil.virtual_memory().total) - 100
 	time_lst.append(time.ctime())
-	temperature_package_id.append(t1)
-	temperature_core_0.append(t2)
-	temperature_core_1.append(t3)
-	ram.append(ram)
+	temperature_package_id_lst.append(temperature_package_id)
+	temperature_core_0_lst.append(temperature_core_0)
+	temperature_core_1_lst.append(temperature_core_1)
+	ram_lst.append(ram)
 	print("Logged")
 	time.sleep(5)
 
 print(f"[INFO] Start {time.ctime()}")
 global time_lst
-global temperature_package_id
-global temperature_core_0
-global temperature_core_1
-global ram
+global temperature_package_id_lst
+global temperature_core_0_lst
+global temperature_core_1_lst
+global ram_lst
 time_lst = []
-temperature_package_id = []
-temperature_core_0 = []
-temperature_core_1 = []
-ram = []
+temperature_package_id_lst = []
+temperature_core_0_lst = []
+temperature_core_1_lst = []
+ram_lst = []
 print("[INFO] Press Ctrl+c to stop")
 while True:
 	try:
@@ -37,10 +37,10 @@ while True:
 df = pd.DataFrame(
 	{
 		"time": time_lst,
-		"package_id": temperature_package_id,
-		"core_0": temperature_core_0,
-		"core_1": temperature_core_1,
-		"ram": ram
+		"package_id": temperature_package_id_lst,
+		"core_0": temperature_core_0_lst,
+		"core_1": temperature_core_1_lst,
+		"ram": ram_lst
 	}
 )
 print(f"Start: {time_lst[0]}	Stop: {time_lst[-1]}")
