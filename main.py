@@ -51,13 +51,13 @@ df = pd.DataFrame(
 
 print(f"Start: {time_lst[0]}	Stop: {time_lst[-1]}")
 
+df = df[["time", "package_id", "core_0", "core_1", "ram", "fan"]]
 df.to_csv("temp_log.csv")
 
 print("[INFO] Data saved as temp_log.csv")
 
 # TO DO
-# Sperate graph for rpm and ram
-# Fix csv unnamed col
+# Sperate graph for rpm and raml
 # gitignore templog
 # Live graphing?
 # Full scale gui version?
