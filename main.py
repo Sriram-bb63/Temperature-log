@@ -57,7 +57,7 @@ df.to_csv("temp_log.csv")
 print("[INFO] Data saved as temp_log.csv")
 
 # TO DO
-# Sperate graph for rpm and raml
+# Sperate graph for rpm and ram
 # gitignore templog
 # Live graphing?
 # Full scale gui version?
