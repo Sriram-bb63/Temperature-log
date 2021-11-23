@@ -1,12 +1,16 @@
+import csv
 import psutil
-import time	
+import time
 
 print(f"[INFO] Start {time.ctime()[11:19]}")
 
 print("[INFO] Press Ctrl+c to stop")
 
-f = open("temp_log_1.csv", "w")
-f.write("time,package_id,core_0,core_1,ram,fan")
+fieldnames = ["time", "package_id", "core_0", "core_1", "ram", "fan"]
+
+with open("temp_log.csv", "w") as f:
+    csv_writer = csv.DictWriter(f, fieldnames=fieldnames)
+    csv_writer.writeheader()
 
 while True:
 
@@ -19,14 +23,25 @@ while True:
 		fan = list(psutil.sensors_fans().values())[0][0][1]
 		current_time = time.ctime()[11:19]
 
-		f.write(f"\n{current_time},{temperature_package_id},{temperature_core_0},{temperature_core_1},{ram},{fan}")
+		with open("temp_log.csv", "a") as f:
+			csv_writer = csv.DictWriter(f, fieldnames=fieldnames)
+			info = {
+				"time": current_time,
+				"package_id": temperature_package_id,
+				"core_0": temperature_core_0,
+				"core_1": temperature_core_1,
+				"ram": ram,
+				"fan": fan
+			}
+			csv_writer.writerow(info)
 
 		print(f"Logged {time.ctime()[11:19]}")
-		time.sleep(5)
 
 	except KeyboardInterrupt:
 		print(f"\n[INFO] Stop {time.ctime()[11:19]}")
 		break
+	
+	time.sleep(5)
 
 f.close()
 
