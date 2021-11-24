@@ -48,11 +48,9 @@ f.close()
 print("[INFO] Data saved as temp_log.csv")
 
 # TO DO
-# gitignore templog
 # Full scale gui version?
 # Full scale cli version?
 # Name?
-# Avoid ipynb?
 # Full time logger from boot to shutdown
 # Save in html
 # Graph using js
