@@ -6,7 +6,7 @@ if live_graph == "y":
     The logger (logger.py) and the graph (graph.py) are 2 separate processes run by main.py
     Ending one will not end the other.
 
-    ps: close the terminal and if it doesn't work, use htop
+    ps: To kill it, close the terminal and if it doesn't work, use htop
     """)
     os.system("python logger.py & python graph.py")
 else:
