@@ -3,8 +3,10 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import pandas as pd
 
+import logger
+
 def animate(i):
-    df = pd.read_csv("temp_log.csv")
+    df = pd.read_csv(f"{logger.filename}.csv")
     x = df["time"]
     y_core_0 = df["core_0"]
     y_core_1 = df["core_1"]

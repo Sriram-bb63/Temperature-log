@@ -2,7 +2,8 @@ import csv
 import psutil
 import time
 
-print(f"[INFO] Start {time.ctime()[11:19]}")
+start = time.ctime()
+print(f"[INFO] Start {start[11:19]}")
 
 print("[INFO] Press Ctrl+c to stop")
 
@@ -14,7 +15,11 @@ for i in range(len(dic["coretemp"])):
 fieldnames.append("ram")
 fieldnames.append("fan")
 
-with open("temp_log.csv", "w") as f:
+filename = start.replace(" ", "_")
+filename = filename.replace(":", "-")
+filename = filename + ".csv"
+
+with open(f"{filename}", "w") as f:
     csv_writer = csv.DictWriter(f, fieldnames=fieldnames)
     csv_writer.writeheader()
 
@@ -47,7 +52,7 @@ while True:
 			}
 		)
 
-		with open("temp_log.csv", "a") as f:
+		with open(f"{filename}", "a") as f:
 			csv_writer = csv.DictWriter(f, fieldnames=fieldnames)
 			csv_writer.writerow(info)
 
@@ -61,4 +66,4 @@ while True:
 
 f.close()
 
-print("[INFO] Data saved as temp_log.csv")
+print(f"[INFO] Data saved as {filename}")
