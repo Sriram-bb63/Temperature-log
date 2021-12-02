@@ -1,17 +1,20 @@
 from matplotlib import animation
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+from os import listdir
 import pandas as pd
 
-import logger
+
+logs = listdir("logs")
+current_log = logs[-1]
 
 def animate(i):
-    df = pd.read_csv(f"{logger.filename}.csv")
+    df = pd.read_csv(f"logs/{current_log}")
     x = df["time"]
     y_core_0 = df["core_0"]
     y_core_1 = df["core_1"]
     y_core_2 = df["core_2"]
-    y_ram = df["ram"]
+    y_ram = df["ram"]  
     plt.cla()
     plt.plot(x, y_core_0, label="core_0")
     plt.plot(x, y_core_1, label="core_1")

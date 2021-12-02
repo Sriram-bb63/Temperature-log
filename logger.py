@@ -16,10 +16,10 @@ fieldnames.append("ram")
 fieldnames.append("fan")
 
 filename = start.replace(" ", "_")
-filename = filename.replace(":", "-")
+filename = filename.replace(":", "_")
 filename = filename + ".csv"
 
-with open(f"{filename}", "w") as f:
+with open(f"logs/{filename}", "w") as f:
     csv_writer = csv.DictWriter(f, fieldnames=fieldnames)
     csv_writer.writeheader()
 
@@ -52,7 +52,7 @@ while True:
 			}
 		)
 
-		with open(f"{filename}", "a") as f:
+		with open(f"logs/{filename}", "a") as f:
 			csv_writer = csv.DictWriter(f, fieldnames=fieldnames)
 			csv_writer.writerow(info)
 
@@ -66,4 +66,4 @@ while True:
 
 f.close()
 
-print(f"[INFO] Data saved as {filename}")
+print(f"[INFO] Data saved in logs/{filename}")
